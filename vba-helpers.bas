@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120724.232923
+'# Version 20120725.004239
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -27,12 +27,12 @@ Const environmentnewline As String = vbCrLf
 'Helper functions for exporting/importing VBA Helpers itself (for source control)
 
 Public Sub VBAHelpers_Export()
-    'Exports the whole module to the folder of the current database and sets the version number.
+    'Exports the VBA Helpers module to the current directory and increases the version number.
     
     Const versionstring As String = "'# Version "
     Dim exportfile As String
     
-    exportfile = Path_Combine(Path_GetCurrentPath, vbahelpersfilename)
+    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
     
     Application.SaveAsText acModule, vbahelpersmodulename, exportfile
     
@@ -56,11 +56,11 @@ Public Sub VBAHelpers_Export()
 End Sub
 
 Public Sub VBAHelpers_Import()
-    'Imports the module from the folder of the current database
+    'Imports a new version of the VBA Helpers module from the current directory.
 
     Dim exportfile As String
 
-    exportfile = Path_Combine(Path_GetCurrentPath, vbahelpersfilename)
+    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
     
     Application.LoadFromText acModule, vbahelpersmodulename, exportfile
 
@@ -69,7 +69,8 @@ End Sub
 '##########################################################################################################################################
 
 Public Function File_ReadAllLines(ByVal path As String) As String()
-
+    'Reads a text file and returns a string array, each array item containing a line from the file.
+    
     Dim i As Integer
     Dim tmp As String
     Dim filelines As Long
@@ -108,7 +109,8 @@ Public Function File_ReadAllLines(ByVal path As String) As String()
 End Function
 
 Public Function File_ReadAllText(ByVal path As String) As String
-
+    'Reads a text file and returns the content in a string variable.
+    
     Dim contents() As String
     
     contents = File_ReadAllLines(path)
@@ -120,13 +122,15 @@ Public Function File_ReadAllText(ByVal path As String) As String
 End Function
 
 Public Sub File_WriteAllLines(ByVal path As String, contents() As String)
+    'Writes the content of a string array into a text file, each array item into a new line.
 
     File_WriteAllText path, Join(contents, environmentnewline)
 
 End Sub
 
 Public Sub File_WriteAllText(ByVal path As String, ByVal contents As String)
-
+    'Writes the content of a string variable into a text file.
+    
     Dim i As Integer
     
     i = FreeFile
@@ -140,7 +144,8 @@ Public Sub File_WriteAllText(ByVal path As String, ByVal contents As String)
 End Sub
 
 Public Function Path_Combine(ParamArray paths() As Variant) As String
-
+    'Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
+    
     Dim path As Variant
     Dim retval As String
     
@@ -166,14 +171,16 @@ Public Function Path_Combine(ParamArray paths() As Variant) As String
 
 End Function
 
-Public Function Path_GetCurrentPath() As String
+Public Function Path_GetCurrentDirectory() As String
+    'Returns the directory of the current Access database.
     
-    Path_GetCurrentPath = Path_GetDirectoryName(CurrentDb.Name)
+    Path_GetCurrentDirectory = Path_GetDirectoryName(CurrentDb.Name)
     
 End Function
 
 Public Function Path_GetDirectoryName(ByVal path As String) As String
-
+    'Receives a complete path, returns only the directory.
+    
     Dim i As Long
     
     If Len(path) > 3 Then
@@ -189,7 +196,8 @@ Public Function Path_GetDirectoryName(ByVal path As String) As String
 End Function
 
 Public Function Path_GetFileName(ByVal path As String) As String
-
+    'Receives a complete path, returns only the file name.
+    
     Dim i As Long
     
     i = InStrRev(path, directoryseparatorchar)
@@ -201,7 +209,8 @@ Public Function Path_GetFileName(ByVal path As String) As String
 End Function
 
 Public Function Path_GetFileNameWithoutExtension(ByVal path As String) As String
-
+    'Receives a complete path, returns only the file name without extension.
+    
     Dim filename As String
     Dim i As Long
     
@@ -216,9 +225,15 @@ Public Function Path_GetFileNameWithoutExtension(ByVal path As String) As String
 End Function
 
 Public Function String_EndsWith(ByVal main As String, ByVal value As String) As Boolean
+    'Returns `True` if the second parameter matches the end of the first parameter.
+    
     String_EndsWith = (Right(main, Len(value)) = value)
+    
 End Function
 
 Public Function String_StartsWith(ByVal main As String, ByVal value As String) As Boolean
+    'Returns `True` if the second parameter matches the beginning of the first parameter.
+    
     String_StartsWith = (Left(main, Len(value)) = value)
+    
 End Function
