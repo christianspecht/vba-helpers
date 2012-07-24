@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120724.005041
+'# Version 20120724.232923
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -68,26 +68,6 @@ End Sub
 
 '##########################################################################################################################################
 
-Public Sub File_WriteAllLines(ByVal path As String, contents() As String)
-
-    File_WriteAllText path, Join(contents, environmentnewline)
-
-End Sub
-
-Public Sub File_WriteAllText(ByVal path As String, ByVal contents As String)
-
-    Dim i As Integer
-    
-    i = FreeFile
-    
-    Close #i
-    
-    Open path For Output As #i
-    Print #i, contents
-    Close #i
-
-End Sub
-
 Public Function File_ReadAllLines(ByVal path As String) As String()
 
     Dim i As Integer
@@ -138,6 +118,26 @@ Public Function File_ReadAllText(ByVal path As String) As String
     End If
 
 End Function
+
+Public Sub File_WriteAllLines(ByVal path As String, contents() As String)
+
+    File_WriteAllText path, Join(contents, environmentnewline)
+
+End Sub
+
+Public Sub File_WriteAllText(ByVal path As String, ByVal contents As String)
+
+    Dim i As Integer
+    
+    i = FreeFile
+    
+    Close #i
+    
+    Open path For Output As #i
+    Print #i, contents
+    Close #i
+
+End Sub
 
 Public Function Path_Combine(ParamArray paths() As Variant) As String
 
