@@ -22,48 +22,48 @@ Private Sub ITestFixture_AddTestCases(ByVal Tests As SimplyVBUnit.TestCaseCollec
 
 Public Sub String_EndsWith_EndMatchesSecondString_ReturnsTrue()
 
-    Assert.That String_EndsWith("abc", "bc"), Iz.EqualTo(True)
+    Assert.IsTrue String_EndsWith("abc", "bc")
     
 End Sub
 
 Public Sub String_EndsWith_EndDoesNotMatchSecondString_ReturnsFalse()
 
-    Assert.That String_EndsWith("abc", "x"), Iz.EqualTo(False)
+    Assert.IsFalse String_EndsWith("abc", "x")
 
 End Sub
 
 Public Sub String_Format_StringParameter_IsInserted()
 
-    Assert.That String_Format("test {0}", "x"), Iz.EqualTo("test x")
+    Assert.AreEqualStrings String_Format("test {0}", "x"), "test x"
     
 End Sub
 
 Public Sub String_Format_NumericParameter_IsInserted()
 
-    Assert.That String_Format("test {0}", 1), Iz.EqualTo("test 1")
+    Assert.AreEqualStrings String_Format("test {0}", 1), "test 1"
     
 End Sub
 
 Public Sub String_Format_MissingParameter_IsInsertedAsEmptyString()
 
-    Assert.That String_Format("test {0} {1}", "x"), Iz.EqualTo("test x ")
+    Assert.AreEqualStrings String_Format("test {0} {1}", "x"), "test x "
     
 End Sub
 
 Public Sub String_Format_MissingPlaceholderAndSuppliedParameter_ParameterIsIgnored()
 
-    Assert.That String_Format("test {0}"), Iz.EqualTo("test ")
+    Assert.AreEqualStrings String_Format("test {0}"), "test "
     
 End Sub
 
 Public Sub String_StartsWith_BeginningMatchesSecondString_ReturnsTrue()
 
-    Assert.That String_StartsWith("abc", "ab"), Iz.EqualTo(True)
+    Assert.IsTrue String_StartsWith("abc", "ab")
     
 End Sub
 
 Public Sub String_StartsWith_BeginningDoesNotMatchSecondString_ReturnsFalse()
 
-    Assert.That String_StartsWith("abc", "x"), Iz.EqualTo(False)
+    Assert.IsFalse String_StartsWith("abc", "x")
 
 End Sub
