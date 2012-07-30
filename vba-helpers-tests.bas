@@ -19,89 +19,51 @@ Private Sub ITestFixture_AddTestCases(ByVal Tests As SimplyVBUnit.TestCaseCollec
 ' Tests
 '--------------------------------------------------------------------
 
-Public Sub String_EndsWith_EndMatchesSecondString_ReturnsTrue()
-    ' Arrange
-    Const Expected As Boolean = True
-    Dim Actual As Boolean
-    ' Act
-    Actual = String_EndsWith("abc", "bc")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
-End Sub
 
+Public Sub String_EndsWith_EndMatchesSecondString_ReturnsTrue()
+
+    Assert.That String_EndsWith("abc", "bc"), Iz.EqualTo(True)
+    
+End Sub
 
 Public Sub String_EndsWith_EndDoesNotMatchSecondString_ReturnsFalse()
-    ' Arrange
-    Const Expected As Boolean = False
-    Dim Actual As Boolean
-    ' Act
-    Actual = String_EndsWith("abc", "x")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
-End Sub
 
+    Assert.That String_EndsWith("abc", "x"), Iz.EqualTo(False)
+
+End Sub
 
 Public Sub String_Format_StringParameter_IsInserted()
-    ' Arrange
-    Const Expected As String = "test x"
-    Dim Actual As String
-    ' Act
-    Actual = String_Format("test {0}", "x")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
-End Sub
 
+    Assert.That String_Format("test {0}", "x"), Iz.EqualTo("test x")
+    
+End Sub
 
 Public Sub String_Format_NumericParameter_IsInserted()
-    ' Arrange
-    Const Expected As String = "test 1"
-    Dim Actual As String
-    ' Act
-    Actual = String_Format("test {0}", 1)
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
-End Sub
 
+    Assert.That String_Format("test {0}", 1), Iz.EqualTo("test 1")
+    
+End Sub
 
 Public Sub String_Format_MissingParameter_IsInsertedAsEmptyString()
-    ' Arrange
-    Const Expected As String = "test x "
-    Dim Actual As String
-    ' Act
-    Actual = String_Format("test {0} {1}", "x")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
-End Sub
 
+    Assert.That String_Format("test {0} {1}", "x"), Iz.EqualTo("test x ")
+    
+End Sub
 
 Public Sub String_Format_MissingPlaceholderAndSuppliedParameter_ParameterIsIgnored()
-    ' Arrange
-    Const Expected As String = "test "
-    Dim Actual As String
-    ' Act
-    Actual = String_Format("test {0}")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
-End Sub
 
+    Assert.That String_Format("test {0}"), Iz.EqualTo("test ")
+    
+End Sub
 
 Public Sub String_StartsWith_BeginningMatchesSecondString_ReturnsTrue()
-    ' Arrange
-    Const Expected As Boolean = True
-    Dim Actual As Boolean
-    ' Act
-    Actual = String_StartsWith("abc", "ab")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
+
+    Assert.That String_StartsWith("abc", "ab"), Iz.EqualTo(True)
+    
 End Sub
 
-
 Public Sub String_StartsWith_BeginningDoesNotMatchSecondString_ReturnsFalse()
-    ' Arrange
-    Const Expected As Boolean = False
-    Dim Actual As Boolean
-    ' Act
-    Actual = String_StartsWith("abc", "x")
-    ' Assert
-    Assert.That Actual, Iz.EqualTo(Expected)
+
+    Assert.That String_StartsWith("abc", "x"), Iz.EqualTo(False)
+
 End Sub
