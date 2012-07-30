@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120730.230021
+'# Version 20120731.013419
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -160,7 +160,7 @@ Public Function Path_GetFileName(ByVal path As String) As String
     
     i = InStrRev(path, directoryseparatorchar)
     
-    If i < Len(path) Then
+    If i > 0 And i < Len(path) Then
         Path_GetFileName = Mid(path, i + 1)
     End If
 
@@ -176,7 +176,9 @@ Public Function Path_GetFileNameWithoutExtension(ByVal path As String) As String
     
     i = InStrRev(filename, ".")
     
-    If i > 0 Then
+    If i = 0 Then
+        Path_GetFileNameWithoutExtension = filename
+    ElseIf i > 0 Then
         Path_GetFileNameWithoutExtension = Left(filename, i - 1)
     End If
     

@@ -20,6 +20,72 @@ Private Sub ITestFixture_AddTestCases(ByVal Tests As SimplyVBUnit.TestCaseCollec
 '--------------------------------------------------------------------
 
 
+Public Sub Path_Combine_SeparatorAtTheEnd_IsTruncated()
+
+    Assert.AreEqualStrings Path_Combine("foo\"), "foo"
+    
+End Sub
+
+Public Sub Path_Combine_TwoPathsWithoutSeparator_ResultHasOneSeparator()
+
+    Assert.AreEqualStrings Path_Combine("foo", "bar"), "foo\bar"
+    
+End Sub
+
+Public Sub Path_Combine_TwoPathsWithOneSeparator_ResultHasOneSeparator()
+
+    Assert.AreEqualStrings Path_Combine("foo\", "bar"), "foo\bar"
+    
+End Sub
+
+Public Sub Path_Combine_TwoPathsWithTwoSeparators_ResultHasOneSeparator()
+
+    Assert.AreEqualStrings Path_Combine("foo\", "\bar"), "foo\bar"
+    
+End Sub
+
+Public Sub Path_GetDirectoryName_DirectoryWithFilename_ReturnsDirectoryOnly()
+
+    Assert.AreEqualStrings Path_GetDirectoryName("foo\bar.txt"), "foo"
+
+End Sub
+
+Public Sub Path_GetDirectoryName_RootDirectoryOnly_ReturnsEmptyString()
+
+    Assert.AreEqualStrings Path_GetDirectoryName("c:\"), ""
+
+End Sub
+
+Public Sub Path_GetFileName_DirectoryWithFilename_ReturnsFilenameOnly()
+
+    Assert.AreEqualStrings Path_GetFileName("foo\bar.txt"), "bar.txt"
+ 
+End Sub
+
+Public Sub Path_GetFileName_DirectoryWithFilenameWithoutExtension_ReturnsFilenameWithoutExtensionOnly()
+
+    Assert.AreEqualStrings Path_GetFileName("foo\bar"), "bar"
+ 
+End Sub
+
+Public Sub Path_GetFileName_PathWithoutSeparator_ReturnsEmptyString()
+
+    Assert.AreEqualStrings Path_GetFileName("foo"), ""
+ 
+End Sub
+
+Public Sub Path_GetFileNameWithoutExtension_FilenameWithExtension_ReturnsFilenameOnly()
+
+    Assert.AreEqualStrings Path_GetFileNameWithoutExtension("foo\bar.ext"), "bar"
+    
+End Sub
+
+Public Sub Path_GetFileNameWithoutExtension_FilenameWithoutExtension_ReturnsFilename()
+
+    Assert.AreEqualStrings Path_GetFileNameWithoutExtension("foo\bar"), "bar"
+    
+End Sub
+
 Public Sub String_EndsWith_EndMatchesSecondString_ReturnsTrue()
 
     Assert.IsTrue String_EndsWith("abc", "bc")
