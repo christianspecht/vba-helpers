@@ -3,10 +3,12 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120725.004239
+'# Version 20120730.210324
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
+'#
+'# Visit the project site for documentation and more information:
 '# http://christianspecht.de/vba-helpers/
 '#
 '# VBA Helpers is licensed under the MIT License.
@@ -20,6 +22,9 @@ Option Explicit
 Const vbahelpersfilename As String = "vba-helpers.bas"
 Const vbahelpersmodulename As String = "VBAHelpers"
 
+Const vbahelperstestfilename As String = "vba-helpers-tests.bas"
+Const vbahelperstestmodulename As String = "VBAHelpersTests"
+
 Const directoryseparatorchar As String = "\"
 Const environmentnewline As String = vbCrLf
 
@@ -32,8 +37,8 @@ Public Sub VBAHelpers_Export()
     Const versionstring As String = "'# Version "
     Dim exportfile As String
     
+    'export VBA Helpers
     exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
-    
     Application.SaveAsText acModule, vbahelpersmodulename, exportfile
     
     'set version number
@@ -53,17 +58,25 @@ Public Sub VBAHelpers_Export()
     
     File_WriteAllLines exportfile, lines2
     
+    'export tests
+    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename)
+    Application.SaveAsText acModule, vbahelperstestmodulename, exportfile
+    
 End Sub
 
 Public Sub VBAHelpers_Import()
     'Imports a new version of the VBA Helpers module from the current directory.
 
     Dim exportfile As String
-
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
     
+    'import tests
+    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename)
+    Application.LoadFromText acModule, vbahelperstestmodulename, exportfile
+    
+    'import VBA Helpers
+    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
     Application.LoadFromText acModule, vbahelpersmodulename, exportfile
-
+    
 End Sub
 
 '##########################################################################################################################################

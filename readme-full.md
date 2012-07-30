@@ -18,7 +18,7 @@ I developed them for use in MS Access (and I developed and tested them **in** MS
 VBA Helpers consists of a single VBA file, [vba-helpers.bas](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/vba-helpers.bas), which you can just import into your application.  
 Right-click and "Save as" to save it on your machine, then import it from the VBA editor if you are using it for the first time.  
 
-To replace an older version of VBA Helpers, put the new file in the same folder as your Access database and run the `VBAHelpers_Import()` function.
+To replace an older version of VBA Helpers, put the new file in the same folder as your Access database and run the `VBAHelpers_Import` function.
 
 ---
 
@@ -66,7 +66,15 @@ All variable names must be in lower case, to avoid [VBA changing the case automa
 
 ##### Committing changes
 
-Run `VBAHelpers_Export` to export the VBA Helpers module to the current directory, and commit it from there.
+Run `VBAHelpers_Export` to export the actual VBA Helpers module and the module with the tests to the current directory, and commit them from there.
+
+---
+
+### Acknowledgements
+
+VBA Helpers makes use of the following open source projects:
+
+- [AccUnit](http://accunit.access-codelib.net/) (which uses [SimplyVBUnit](http://sourceforge.net/projects/simplyvbunit/))
 
 ---
 
