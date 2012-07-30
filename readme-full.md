@@ -47,6 +47,8 @@ Receives a complete path, returns only the file name.
 Receives a complete path, returns only the file name without extension.
 - `String_EndsWith`  
 Returns `True` if the second parameter matches the end of the first parameter.
+- `String_Format`  
+Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.
 - `String_StartsWith`  
 Returns `True` if the second parameter matches the beginning of the first parameter.
 - `VBAHelpers_Export`  

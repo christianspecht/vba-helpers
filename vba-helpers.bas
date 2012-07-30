@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120730.210324
+'# Version 20120730.213354
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -242,6 +242,28 @@ Public Function String_EndsWith(ByVal main As String, ByVal value As String) As 
     
     String_EndsWith = (Right(main, Len(value)) = value)
     
+End Function
+
+Public Function String_Format(ByVal format As String, ParamArray args() As Variant)
+    'Replaces numbered placeholders ({0}, {1}, ...) in the first parameter by the corresponding value from the additional parameter list.
+
+    Dim numberofargs As Integer
+    Dim i As Integer
+    
+    numberofargs = UBound(args)
+    
+    For i = 0 To 100
+    
+        If i <= numberofargs Then
+            format = Replace(format, "{" & i & "}", args(i))
+        Else
+            format = Replace(format, "{" & i & "}", "")
+        End If
+    
+    Next
+    
+    String_Format = format
+
 End Function
 
 Public Function String_StartsWith(ByVal main As String, ByVal value As String) As Boolean
