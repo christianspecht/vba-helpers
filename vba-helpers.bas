@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120730.213354
+'# Version 20120730.220333
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -19,65 +19,11 @@
 Option Compare Database
 Option Explicit
 
-Const vbahelpersfilename As String = "vba-helpers.bas"
-Const vbahelpersmodulename As String = "VBAHelpers"
-
-Const vbahelperstestfilename As String = "vba-helpers-tests.bas"
-Const vbahelperstestmodulename As String = "VBAHelpersTests"
+Public Const vbahelpersfilename As String = "vba-helpers.bas"
+Public Const vbahelpersmodulename As String = "VBAHelpers"
 
 Const directoryseparatorchar As String = "\"
 Const environmentnewline As String = vbCrLf
-
-'##########################################################################################################################################
-'Helper functions for exporting/importing VBA Helpers itself (for source control)
-
-Public Sub VBAHelpers_Export()
-    'Exports the VBA Helpers module to the current directory and increases the version number.
-    
-    Const versionstring As String = "'# Version "
-    Dim exportfile As String
-    
-    'export VBA Helpers
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
-    Application.SaveAsText acModule, vbahelpersmodulename, exportfile
-    
-    'set version number
-    Dim lines1() As String
-    Dim lines2() As String
-    Dim i As Long
-    
-    lines1 = File_ReadAllLines(exportfile)
-    ReDim lines2(UBound(lines1))
-    For i = 0 To UBound(lines1)
-        If String_StartsWith(lines1(i), versionstring) Then
-            lines2(i) = versionstring & format(Now, "yyyymmdd.hhmmss")
-        Else
-            lines2(i) = lines1(i)
-        End If
-    Next
-    
-    File_WriteAllLines exportfile, lines2
-    
-    'export tests
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename)
-    Application.SaveAsText acModule, vbahelperstestmodulename, exportfile
-    
-End Sub
-
-Public Sub VBAHelpers_Import()
-    'Imports a new version of the VBA Helpers module from the current directory.
-
-    Dim exportfile As String
-    
-    'import tests
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename)
-    Application.LoadFromText acModule, vbahelperstestmodulename, exportfile
-    
-    'import VBA Helpers
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
-    Application.LoadFromText acModule, vbahelpersmodulename, exportfile
-    
-End Sub
 
 '##########################################################################################################################################
 
@@ -91,7 +37,6 @@ Public Function File_ReadAllLines(ByVal path As String) As String()
     Dim retval() As String
     
     i = FreeFile
-    
     Close #i
     
     Open path For Input As #i
@@ -271,4 +216,22 @@ Public Function String_StartsWith(ByVal main As String, ByVal value As String) A
     
     String_StartsWith = (Left(main, Len(value)) = value)
     
+End Function
+
+Public Function VBAHelpers_Update()
+    'Updates VBA Helpers to newer version by importing a downloaded file (file must be in same folder as current Access database)
+    
+    Dim exportfile As String
+    Dim message As String
+
+    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
+
+    If Dir(exportfile) = "" Then
+        message = String_Format("Couldn't find VBA Helpers file in current directory:{0}{1}{0}{0}VBA Helpers update failed!", vbCrLf, exportfile)
+        MsgBox message, vbCritical
+        Exit Function
+    End If
+
+    Application.LoadFromText acModule, vbahelpersmodulename, exportfile
+
 End Function

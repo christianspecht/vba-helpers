@@ -16,9 +16,10 @@ I developed them for use in MS Access (and I developed and tested them **in** MS
 ## Setup
 
 VBA Helpers consists of a single VBA file, [vba-helpers.bas](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/vba-helpers.bas), which you can just import into your application.  
-Right-click and "Save as" to save it on your machine, then import it from the VBA editor if you are using it for the first time.  
+Right-click and "Save as" to save it on your machine. To import:
 
-To replace an older version of VBA Helpers, put the new file in the same folder as your Access database and run the `VBAHelpers_Import` function.
+- if you are using VBA Helpers for the first time, import the downloaded file from the VBA editor
+- if your project already contains VBA Helpers and you want to replace it with the newer version, you can put the new file in the same folder as your Access database and run the `VBAHelpers_Update` function.
 
 ---
 
@@ -51,12 +52,8 @@ Returns `True` if the second parameter matches the end of the first parameter.
 Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.
 - `String_StartsWith`  
 Returns `True` if the second parameter matches the beginning of the first parameter.
-- `VBAHelpers_Export`  
-Exports the VBA Helpers module to the current directory and increases the version number.  
-Useful for development only (see "Committing changes" below)
-- `VBAHelpers_Import`  
-Imports a new version of the VBA Helpers module from the current directory.  
-Useful for updating to a newer version (see "Setup" above)
+- `VBAHelpers_Update`  
+Updates VBA Helpers to newer version by importing a downloaded file (file must be in same folder as current Access database). See "Setup" above for more information.
 
 ---
 
@@ -68,7 +65,7 @@ All variable names must be in lower case, to avoid [VBA changing the case automa
 
 ##### Committing changes
 
-Run `VBAHelpers_Export` to export the actual VBA Helpers module and the module with the tests to the current directory, and commit them from there.
+Run `VBAHelpers_Export` to export all modules to the current directory, and commit them from there.
 
 ---
 
