@@ -50,6 +50,12 @@ Receives a complete path, returns only the file name without extension.
 Returns `True` if the second parameter matches the end of the first parameter.
 - `String_Format`  
 Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.
+- `String_PadLeft`  
+Right-aligns the first string parameter by padding it on the left with the second string parameter, up to the total specified width.  
+Example: `String_PadLeft("foo",5,"a")` will return `aafoo`
+- `String_PadRight`  
+Left-aligns the first string parameter by padding it on the right with the second string parameter, up to the total specified width.  
+Example: `String_PadRight("foo",5,"a")` will return `fooaa`
 - `String_StartsWith`  
 Returns `True` if the second parameter matches the beginning of the first parameter.
 - `VBAHelpers_Update`  

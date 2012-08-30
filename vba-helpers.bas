@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120731.013419
+'# Version 20120831.010217
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -211,6 +211,22 @@ Public Function String_Format(ByVal format As String, ParamArray args() As Varia
     
     String_Format = format
 
+End Function
+
+Public Function String_PadLeft(ByVal inputstring, ByVal totalwidth, Optional ByVal paddingchar = " ")
+    'Right-aligns the first string parameter by padding it on the left with the second string parameter, up to the total specified width.
+    'Example: `String_PadLeft("foo",5,"a")` will return `aafoo`
+    
+    String_PadLeft = Right(String(totalwidth, Left(paddingchar, 1)) & inputstring, totalwidth)
+    
+End Function
+
+Public Function String_PadRight(ByVal inputstring, ByVal totalwidth, Optional ByVal paddingchar = " ")
+    'Left-aligns the first string parameter by padding it on the right with the second string parameter, up to the total specified width.
+    'Example: `String_PadRight("foo",5,"a")` will return `fooaa`
+    
+    String_PadRight = Left(inputstring & String(totalwidth, Left(paddingchar, 1)), totalwidth)
+    
 End Function
 
 Public Function String_StartsWith(ByVal main As String, ByVal value As String) As Boolean

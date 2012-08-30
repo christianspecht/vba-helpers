@@ -122,6 +122,42 @@ Public Sub String_Format_MissingPlaceholderAndSuppliedParameter_ParameterIsIgnor
     
 End Sub
 
+Public Sub String_PadLeft_WithPaddingChar_IsPaddedCorrectly()
+
+    Assert.AreEqualStrings String_PadLeft("foo", 5, "a"), "aafoo"
+
+End Sub
+
+Public Sub String_PadLeft_WithPaddingString_IsPaddedWithFirstChar()
+
+    Assert.AreEqualStrings String_PadLeft("foo", 5, "ab"), "aafoo"
+
+End Sub
+
+Public Sub String_PadLeft_WithoutPaddingChar_IsPaddedCorrectly()
+
+    Assert.AreEqualStrings String_PadLeft("foo", 5), "  foo"
+
+End Sub
+
+Public Sub String_PadRight_WithPaddingChar_IsPaddedCorrectly()
+
+    Assert.AreEqualStrings String_PadRight("foo", 5, "a"), "fooaa"
+
+End Sub
+
+Public Sub String_PadRight_WithPaddingString_IsPaddedWithFirstChar()
+
+    Assert.AreEqualStrings String_PadRight("foo", 5, "ab"), "fooaa"
+
+End Sub
+
+Public Sub String_PadRight_WithoutPaddingChar_IsPaddedCorrectly()
+
+    Assert.AreEqualStrings String_PadRight("foo", 5), "foo  "
+
+End Sub
+
 Public Sub String_StartsWith_BeginningMatchesSecondString_ReturnsTrue()
 
     Assert.IsTrue String_StartsWith("abc", "ab")
