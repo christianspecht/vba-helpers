@@ -28,37 +28,37 @@ Right-click and "Save as" to save it on your machine. To import:
 Most of the functions are named after (and do the same like) useful functions in .NET that I missed in VBA.  
 Here is a short summary of the available functions and what they do in a nutshell:
 
-- `File_ReadAllLines`  
+- **`File_ReadAllLines`**  
 Reads a text file and returns a string array, each array item containing a line from the file.
-- `File_ReadAllText`  
+- **`File_ReadAllText`**  
 Reads a text file and returns the content in a string variable.
-- `File_WriteAllLines`  
+- **`File_WriteAllLines`**  
 Writes the content of a string array into a text file, each array item into a new line.
-- `File_WriteAllText`  
+- **`File_WriteAllText`**  
 Writes the content of a string variable into a text file.
-- `Path_Combine`  
+- **`Path_Combine`**  
 Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
-- `Path_GetCurrentDirectory`  
+- **`Path_GetCurrentDirectory`**  
 Returns the directory of the current Access database.
-- `Path_GetDirectoryName`  
+- **`Path_GetDirectoryName`**  
 Receives a complete path, returns only the directory.
-- `Path_GetFileName`  
+- **`Path_GetFileName`**  
 Receives a complete path, returns only the file name.
-- `Path_GetFileNameWithoutExtension`  
+- **`Path_GetFileNameWithoutExtension`**  
 Receives a complete path, returns only the file name without extension.
-- `String_EndsWith`  
+- **`String_EndsWith`**  
 Returns `True` if the second parameter matches the end of the first parameter.
-- `String_Format`  
+- **`String_Format`**  
 Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.
-- `String_PadLeft`  
+- **`String_PadLeft`**  
 Right-aligns the first string parameter by padding it on the left with the second string parameter, up to the total specified width.  
 Example: `String_PadLeft("foo",5,"a")` will return `aafoo`
-- `String_PadRight`  
+- **`String_PadRight`**  
 Left-aligns the first string parameter by padding it on the right with the second string parameter, up to the total specified width.  
 Example: `String_PadRight("foo",5,"a")` will return `fooaa`
-- `String_StartsWith`  
+- **`String_StartsWith`**  
 Returns `True` if the second parameter matches the beginning of the first parameter.
-- `VBAHelpers_Update`  
+- **`VBAHelpers_Update`**  
 Updates VBA Helpers to newer version by importing a downloaded file (file must be in same folder as current Access database). See "Setup" above for more information.
 
 ---
