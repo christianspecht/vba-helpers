@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120831.010217
+'# Version 20120831.210207
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -181,6 +181,13 @@ Public Function Path_GetFileNameWithoutExtension(ByVal path As String) As String
     ElseIf i > 0 Then
         Path_GetFileNameWithoutExtension = Left(filename, i - 1)
     End If
+    
+End Function
+
+Public Function String_Contains(ByVal main As String, ByVal value As String) As Boolean
+    'Returns `True` if the second parameter occurs within the first parameter.
+    
+    String_Contains = (InStr(1, main, value) > 0)
     
 End Function
 

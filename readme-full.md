@@ -46,6 +46,8 @@ Receives a complete path, returns only the directory.
 Receives a complete path, returns only the file name.
 - **`Path_GetFileNameWithoutExtension`**  
 Receives a complete path, returns only the file name without extension.
+- **`String_Contains`**  
+Returns `True` if the second parameter occurs within the first parameter.
 - **`String_EndsWith`**  
 Returns `True` if the second parameter matches the end of the first parameter.
 - **`String_Format`**  

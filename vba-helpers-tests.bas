@@ -86,6 +86,18 @@ Public Sub Path_GetFileNameWithoutExtension_FilenameWithoutExtension_ReturnsFile
     
 End Sub
 
+Public Sub String_Contains_ContainsString_ReturnsTrue()
+
+    Assert.IsTrue String_Contains("abc", "ab")
+    
+End Sub
+
+Public Sub String_Contains_DoesNotContainString_ReturnsFalse()
+
+    Assert.IsFalse String_Contains("abc", "ac")
+    
+End Sub
+
 Public Sub String_EndsWith_EndMatchesSecondString_ReturnsTrue()
 
     Assert.IsTrue String_EndsWith("abc", "bc")
