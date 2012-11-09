@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20121109.172711
+'# Version 20121109.174956
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -26,6 +26,15 @@ Const directoryseparatorchar_vbah As String = "\"
 Const environmentnewline_vbah As String = vbCrLf
 
 '##########################################################################################################################################
+
+Public Sub File_Delete(ByVal path_vbah As String)
+    'Deletes a file. If the file does not exist, nothing happens.
+
+    If Dir(path_vbah) > "" Then
+        Kill path_vbah
+    End If
+
+End Sub
 
 Public Function File_ReadAllLines(ByVal path_vbah As String) As String()
     'Reads a text file and returns a string array, each array item containing a line from the file.
