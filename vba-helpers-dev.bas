@@ -1,74 +1,74 @@
 Option Compare Database
 Option Explicit
 
-Const vbahelpersdevfilename As String = "vba-helpers-dev.bas"
-Const vbahelpersdevmodulename As String = "VBAHelpersDev"
-Const vbahelperstestfilename As String = "vba-helpers-tests.bas"
-Const vbahelperstestmodulename As String = "VBAHelpersTests"
+Const vbahelpersdevfilename_vbah As String = "vba-helpers-dev.bas"
+Const vbahelpersdevmodulename_vbah As String = "VBAHelpersDev"
+Const vbahelperstestfilename_vbah As String = "vba-helpers-tests.bas"
+Const vbahelperstestmodulename_vbah As String = "VBAHelpersTests"
 
 Public Sub VBAHelpers_Export()
     'Exports all modules to the current directory (for source control) and increases the version number in the VBA Helpers module.
 
-    Const versionstring As String = "'# Version "
-    Dim exportfile As String
+    Const versionstring_vbah As String = "'# Version "
+    Dim exportfile_vbah As String
     
     'export VBA Helpers
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
-    Application.SaveAsText acModule, vbahelpersmodulename, exportfile
+    exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename_vbah)
+    Application.SaveAsText acModule, vbahelpersmodulename_vbah, exportfile_vbah
 
     'set version number
-    Dim lines1() As String
-    Dim lines2() As String
-    Dim i As Long
+    Dim lines1_vbah() As String
+    Dim lines2_vbah() As String
+    Dim i_vbah As Long
 
-    lines1 = File_ReadAllLines(exportfile)
-    ReDim lines2(UBound(lines1))
-    For i = 0 To UBound(lines1)
-        If String_StartsWith(lines1(i), versionstring) Then
-            lines2(i) = versionstring & format(Now, "yyyymmdd.hhmmss")
+    lines1_vbah = File_ReadAllLines(exportfile_vbah)
+    ReDim lines2_vbah(UBound(lines1_vbah))
+    For i_vbah = 0 To UBound(lines1_vbah)
+        If String_StartsWith(lines1_vbah(i_vbah), versionstring_vbah) Then
+            lines2_vbah(i_vbah) = versionstring_vbah & format(Now, "yyyymmdd.hhmmss")
         Else
-            lines2(i) = lines1(i)
+            lines2_vbah(i_vbah) = lines1_vbah(i_vbah)
         End If
     Next
 
-    File_WriteAllLines exportfile, lines2
+    File_WriteAllLines exportfile_vbah, lines2_vbah
 
     'export tests
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename)
-    Application.SaveAsText acModule, vbahelperstestmodulename, exportfile
+    exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename_vbah)
+    Application.SaveAsText acModule, vbahelperstestmodulename_vbah, exportfile_vbah
 
     'export dev functions
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersdevfilename)
-    Application.SaveAsText acModule, vbahelpersdevmodulename, exportfile
+    exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelpersdevfilename_vbah)
+    Application.SaveAsText acModule, vbahelpersdevmodulename_vbah, exportfile_vbah
 
 End Sub
 
 Public Sub VBAHelpers_Import()
     'Imports all VBA Helpers modules from the current directory.
 
-    Dim exportfile As String
-    Dim message As String
+    Dim exportfile_vbah As String
+    Dim message_vbah As String
 
     'import tests
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename)
-    If Dir(exportfile) = "" Then
-        message = String_Format("Couldn't find test class:{0}{1}", vbCrLf, exportfile)
-        MsgBox message, vbCritical
+    exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename_vbah)
+    If Dir(exportfile_vbah) = "" Then
+        message_vbah = String_Format("Couldn't find test class:{0}{1}", vbCrLf, exportfile_vbah)
+        MsgBox message_vbah, vbCritical
         Exit Sub
     End If
     
-    Application.LoadFromText acModule, vbahelperstestmodulename, exportfile
+    Application.LoadFromText acModule, vbahelperstestmodulename_vbah, exportfile_vbah
 
 
     'import dev functions
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersdevfilename)
-    If Dir(exportfile) = "" Then
-        message = String_Format("Couldn't find dev functions:{0}{1}", vbCrLf, exportfile)
-        MsgBox message, vbCritical
+    exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelpersdevfilename_vbah)
+    If Dir(exportfile_vbah) = "" Then
+        message_vbah = String_Format("Couldn't find dev functions:{0}{1}", vbCrLf, exportfile_vbah)
+        MsgBox message_vbah, vbCritical
         Exit Sub
     End If
     
-    Application.LoadFromText acModule, vbahelpersdevmodulename, exportfile
+    Application.LoadFromText acModule, vbahelpersdevmodulename_vbah, exportfile_vbah
     
 
     'import VBA Helpers (use update function from actual VBA Helpers module)

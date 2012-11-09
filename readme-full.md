@@ -8,7 +8,7 @@ I developed them for use in MS Access (and I developed and tested them **in** MS
 ## Links
 
 - [Download vba-helpers.bas directly](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/vba-helpers.bas) (see "Setup" below)
-- [Found a bug?](https://bitbucket.org/christianspecht/vba-helpers/issues/new)
+- [Report a bug](https://bitbucket.org/christianspecht/vba-helpers/issues/new)
 - [Main project page on Bitbucket](https://bitbucket.org/christianspecht/vba-helpers)
 
 ---
@@ -69,7 +69,15 @@ Updates VBA Helpers to newer version by importing a downloaded file (file must b
 
 ##### Coding Guidelines
 
-All variable names must be in lower case, to avoid [VBA changing the case automatically when mixing upper/lower case](http://stackoverflow.com/q/4852735) - this is **very** annoying when using source control.
+Unfortunately, [VBA globally changes the case of variable names when you mix upper/lower case](http://stackoverflow.com/q/4852735).  
+This is **very** annoying when using source control.  
+It's even worse when VBA Helpers is imported into another VBA project, and the case of *the variables in this project* is changed because some of them happened to have the same names like some of the VBA Helpers variables.
+
+To avoid this, all variable names in VBA Helpers must adhere to the following guidelines:
+
+- lower case only
+- suffixed by `_vbah` (for "VBA Helpers"), e.g. `foo_vbah`
+
 
 ##### Committing changes
 

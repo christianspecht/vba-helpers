@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20120831.210207
+'# Version 20121109.172711
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -19,113 +19,113 @@
 Option Compare Database
 Option Explicit
 
-Public Const vbahelpersfilename As String = "vba-helpers.bas"
-Public Const vbahelpersmodulename As String = "VBAHelpers"
+Public Const vbahelpersfilename_vbah As String = "vba-helpers.bas"
+Public Const vbahelpersmodulename_vbah As String = "VBAHelpers"
 
-Const directoryseparatorchar As String = "\"
-Const environmentnewline As String = vbCrLf
+Const directoryseparatorchar_vbah As String = "\"
+Const environmentnewline_vbah As String = vbCrLf
 
 '##########################################################################################################################################
 
-Public Function File_ReadAllLines(ByVal path As String) As String()
+Public Function File_ReadAllLines(ByVal path_vbah As String) As String()
     'Reads a text file and returns a string array, each array item containing a line from the file.
     
-    Dim i As Integer
-    Dim tmp As String
-    Dim filelines As Long
-    Dim arraylines As Long
-    Dim retval() As String
+    Dim i_vbah As Integer
+    Dim tmp_vbah As String
+    Dim filelines_vbah As Long
+    Dim arraylines_vbah As Long
+    Dim retval_vbah() As String
     
-    i = FreeFile
-    Close #i
+    i_vbah = FreeFile
+    Close #i_vbah
     
-    Open path For Input As #i
+    Open path_vbah For Input As #i_vbah
     
-    filelines = 0
-    arraylines = 0
+    filelines_vbah = 0
+    arraylines_vbah = 0
     
-    Do While Not EOF(i)
+    Do While Not EOF(i_vbah)
         
-        If arraylines <= filelines Then
-            arraylines = arraylines + 100
-            ReDim Preserve retval(arraylines - 1)
+        If arraylines_vbah <= filelines_vbah Then
+            arraylines_vbah = arraylines_vbah + 100
+            ReDim Preserve retval_vbah(arraylines_vbah - 1)
         End If
         
-        Line Input #i, tmp
-        retval(filelines) = tmp
+        Line Input #i_vbah, tmp_vbah
+        retval_vbah(filelines_vbah) = tmp_vbah
         
-        filelines = filelines + 1
+        filelines_vbah = filelines_vbah + 1
         
     Loop
     
-    ReDim Preserve retval(filelines - 1)
+    ReDim Preserve retval_vbah(filelines_vbah - 1)
     
-    Close #i
+    Close #i_vbah
     
-    File_ReadAllLines = retval
+    File_ReadAllLines = retval_vbah
     
 End Function
 
-Public Function File_ReadAllText(ByVal path As String) As String
+Public Function File_ReadAllText(ByVal path_vbah As String) As String
     'Reads a text file and returns the content in a string variable.
     
-    Dim contents() As String
+    Dim contents_vbah() As String
     
-    contents = File_ReadAllLines(path)
+    contents_vbah = File_ReadAllLines(path_vbah)
     
-    If UBound(contents) > 0 Then
-        File_ReadAllText = (Join(contents, environmentnewline))
+    If UBound(contents_vbah) > 0 Then
+        File_ReadAllText = (Join(contents_vbah, environmentnewline_vbah))
     End If
 
 End Function
 
-Public Sub File_WriteAllLines(ByVal path As String, contents() As String)
+Public Sub File_WriteAllLines(ByVal path_vbah As String, contents_vbah() As String)
     'Writes the content of a string array into a text file, each array item into a new line.
 
-    File_WriteAllText path, Join(contents, environmentnewline)
+    File_WriteAllText path_vbah, Join(contents_vbah, environmentnewline_vbah)
 
 End Sub
 
-Public Sub File_WriteAllText(ByVal path As String, ByVal contents As String)
+Public Sub File_WriteAllText(ByVal path_vbah As String, ByVal contents_vbah As String)
     'Writes the content of a string variable into a text file.
     
-    Dim i As Integer
+    Dim i_vbah As Integer
     
-    i = FreeFile
+    i_vbah = FreeFile
     
-    Close #i
+    Close #i_vbah
     
-    Open path For Output As #i
-    Print #i, contents
-    Close #i
+    Open path_vbah For Output As #i_vbah
+    Print #i_vbah, contents_vbah
+    Close #i_vbah
 
 End Sub
 
-Public Function Path_Combine(ParamArray paths() As Variant) As String
+Public Function Path_Combine(ParamArray paths_vbah() As Variant) As String
     'Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
     
-    Dim path As Variant
-    Dim retval As String
+    Dim path_vbah As Variant
+    Dim retval_vbah As String
     
-    For Each path In paths
+    For Each path_vbah In paths_vbah
     
-        If String_StartsWith(path, directoryseparatorchar) Then
-            path = Mid(path, Len(directoryseparatorchar) + 1)
+        If String_StartsWith(path_vbah, directoryseparatorchar_vbah) Then
+            path_vbah = Mid(path_vbah, Len(directoryseparatorchar_vbah) + 1)
         End If
     
-        If String_EndsWith(path, directoryseparatorchar) Then
-            path = Left(path, Len(path) - Len(directoryseparatorchar))
+        If String_EndsWith(path_vbah, directoryseparatorchar_vbah) Then
+            path_vbah = Left(path_vbah, Len(path_vbah) - Len(directoryseparatorchar_vbah))
         End If
     
-        retval = retval & path & directoryseparatorchar
+        retval_vbah = retval_vbah & path_vbah & directoryseparatorchar_vbah
     
     Next
     
-    If String_EndsWith(retval, directoryseparatorchar) Then
-        retval = Left(retval, Len(retval) - Len(directoryseparatorchar))
+    If String_EndsWith(retval_vbah, directoryseparatorchar_vbah) Then
+        retval_vbah = Left(retval_vbah, Len(retval_vbah) - Len(directoryseparatorchar_vbah))
     End If
     
-    Path_Combine = retval
+    Path_Combine = retval_vbah
 
 End Function
 
@@ -136,127 +136,127 @@ Public Function Path_GetCurrentDirectory() As String
     
 End Function
 
-Public Function Path_GetDirectoryName(ByVal path As String) As String
+Public Function Path_GetDirectoryName(ByVal path_vbah As String) As String
     'Receives a complete path, returns only the directory.
     
-    Dim i As Long
+    Dim i_vbah As Long
     
-    If Len(path) > 3 Then
+    If Len(path_vbah) > 3 Then
     
-        i = InStrRev(path, directoryseparatorchar)
+        i_vbah = InStrRev(path_vbah, directoryseparatorchar_vbah)
     
-        If i > 3 Then
-            Path_GetDirectoryName = Left(path, i - 1)
+        If i_vbah > 3 Then
+            Path_GetDirectoryName = Left(path_vbah, i_vbah - 1)
         End If
 
     End If
     
 End Function
 
-Public Function Path_GetFileName(ByVal path As String) As String
+Public Function Path_GetFileName(ByVal path_vbah As String) As String
     'Receives a complete path, returns only the file name.
     
-    Dim i As Long
+    Dim i_vbah As Long
     
-    i = InStrRev(path, directoryseparatorchar)
+    i_vbah = InStrRev(path_vbah, directoryseparatorchar_vbah)
     
-    If i > 0 And i < Len(path) Then
-        Path_GetFileName = Mid(path, i + 1)
+    If i_vbah > 0 And i_vbah < Len(path_vbah) Then
+        Path_GetFileName = Mid(path_vbah, i_vbah + 1)
     End If
 
 End Function
 
-Public Function Path_GetFileNameWithoutExtension(ByVal path As String) As String
+Public Function Path_GetFileNameWithoutExtension(ByVal path_vbah As String) As String
     'Receives a complete path, returns only the file name without extension.
     
-    Dim filename As String
-    Dim i As Long
+    Dim filename_vbah As String
+    Dim i_vbah As Long
     
-    filename = Path_GetFileName(path)
+    filename_vbah = Path_GetFileName(path_vbah)
     
-    i = InStrRev(filename, ".")
+    i_vbah = InStrRev(filename_vbah, ".")
     
-    If i = 0 Then
-        Path_GetFileNameWithoutExtension = filename
-    ElseIf i > 0 Then
-        Path_GetFileNameWithoutExtension = Left(filename, i - 1)
+    If i_vbah = 0 Then
+        Path_GetFileNameWithoutExtension = filename_vbah
+    ElseIf i_vbah > 0 Then
+        Path_GetFileNameWithoutExtension = Left(filename_vbah, i_vbah - 1)
     End If
     
 End Function
 
-Public Function String_Contains(ByVal main As String, ByVal value As String) As Boolean
+Public Function String_Contains(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter occurs within the first parameter.
     
-    String_Contains = (InStr(1, main, value) > 0)
+    String_Contains = (InStr(1, main_vbah, value_vbah) > 0)
     
 End Function
 
-Public Function String_EndsWith(ByVal main As String, ByVal value As String) As Boolean
+Public Function String_EndsWith(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter matches the end of the first parameter.
     
-    String_EndsWith = (Right(main, Len(value)) = value)
+    String_EndsWith = (Right(main_vbah, Len(value_vbah)) = value_vbah)
     
 End Function
 
-Public Function String_Format(ByVal format As String, ParamArray args() As Variant)
+Public Function String_Format(ByVal format_vbah As String, ParamArray args_vbah() As Variant)
     'Replaces numbered placeholders ({0}, {1}, ...) in the first parameter by the corresponding value from the additional parameter list.
 
-    Dim numberofargs As Integer
-    Dim i As Integer
+    Dim numberofargs_vbah As Integer
+    Dim i_vbah As Integer
     
-    numberofargs = UBound(args)
+    numberofargs_vbah = UBound(args_vbah)
     
-    For i = 0 To 100
+    For i_vbah = 0 To 100
     
-        If i <= numberofargs Then
-            format = Replace(format, "{" & i & "}", args(i))
+        If i_vbah <= numberofargs_vbah Then
+            format_vbah = Replace(format_vbah, "{" & i_vbah & "}", args_vbah(i_vbah))
         Else
-            format = Replace(format, "{" & i & "}", "")
+            format_vbah = Replace(format_vbah, "{" & i_vbah & "}", "")
         End If
     
     Next
     
-    String_Format = format
+    String_Format = format_vbah
 
 End Function
 
-Public Function String_PadLeft(ByVal inputstring, ByVal totalwidth, Optional ByVal paddingchar = " ")
+Public Function String_PadLeft(ByVal inputstring_vbah, ByVal totalwidth_vbah, Optional ByVal paddingchar_vbah = " ")
     'Right-aligns the first string parameter by padding it on the left with the second string parameter, up to the total specified width.
     'Example: `String_PadLeft("foo",5,"a")` will return `aafoo`
     
-    String_PadLeft = Right(String(totalwidth, Left(paddingchar, 1)) & inputstring, totalwidth)
+    String_PadLeft = Right(String(totalwidth_vbah, Left(paddingchar_vbah, 1)) & inputstring_vbah, totalwidth_vbah)
     
 End Function
 
-Public Function String_PadRight(ByVal inputstring, ByVal totalwidth, Optional ByVal paddingchar = " ")
+Public Function String_PadRight(ByVal inputstring_vbah, ByVal totalwidth_vbah, Optional ByVal paddingchar_vbah = " ")
     'Left-aligns the first string parameter by padding it on the right with the second string parameter, up to the total specified width.
     'Example: `String_PadRight("foo",5,"a")` will return `fooaa`
     
-    String_PadRight = Left(inputstring & String(totalwidth, Left(paddingchar, 1)), totalwidth)
+    String_PadRight = Left(inputstring_vbah & String(totalwidth_vbah, Left(paddingchar_vbah, 1)), totalwidth_vbah)
     
 End Function
 
-Public Function String_StartsWith(ByVal main As String, ByVal value As String) As Boolean
+Public Function String_StartsWith(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter matches the beginning of the first parameter.
     
-    String_StartsWith = (Left(main, Len(value)) = value)
+    String_StartsWith = (Left(main_vbah, Len(value_vbah)) = value_vbah)
     
 End Function
 
 Public Function VBAHelpers_Update()
     'Updates VBA Helpers to newer version by importing a downloaded file (file must be in same folder as current Access database)
     
-    Dim exportfile As String
-    Dim message As String
+    Dim exportfile_vbah As String
+    Dim message_vbah As String
 
-    exportfile = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename)
+    exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename_vbah)
 
-    If Dir(exportfile) = "" Then
-        message = String_Format("Couldn't find VBA Helpers file in current directory:{0}{1}{0}{0}VBA Helpers update failed!", vbCrLf, exportfile)
-        MsgBox message, vbCritical
+    If Dir(exportfile_vbah) = "" Then
+        message_vbah = String_Format("Couldn't find VBA Helpers file in current directory:{0}{1}{0}{0}VBA Helpers update failed!", vbCrLf, exportfile_vbah)
+        MsgBox message_vbah, vbCritical
         Exit Function
     End If
 
-    Application.LoadFromText acModule, vbahelpersmodulename, exportfile
+    Application.LoadFromText acModule, vbahelpersmodulename_vbah, exportfile_vbah
 
 End Function
