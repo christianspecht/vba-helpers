@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20121228.001859
+'# Version 20121228.002139
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -38,7 +38,7 @@ End Function
 Public Sub File_Delete(ByVal path_vbah As String)
     'Deletes a file. If the file does not exist, nothing happens.
 
-    If Dir(path_vbah) > "" Then
+    If File_Exists(path_vbah) Then
         Kill path_vbah
     End If
 
@@ -275,7 +275,7 @@ Public Function VBAHelpers_Update()
 
     exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelpersfilename_vbah)
 
-    If Dir(exportfile_vbah) = "" Then
+    If Not File_Exists(exportfile_vbah) Then
         message_vbah = String_Format("Couldn't find VBA Helpers file in current directory:{0}{1}{0}{0}VBA Helpers update failed!", vbCrLf, exportfile_vbah)
         MsgBox message_vbah, vbCritical
         Exit Function

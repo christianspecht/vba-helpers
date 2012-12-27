@@ -51,7 +51,7 @@ Public Sub VBAHelpers_Import()
 
     'import tests
     exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelperstestfilename_vbah)
-    If Dir(exportfile_vbah) = "" Then
+    If Not File_Exists(exportfile_vbah) Then
         message_vbah = String_Format("Couldn't find test class:{0}{1}", vbCrLf, exportfile_vbah)
         MsgBox message_vbah, vbCritical
         Exit Sub
@@ -62,7 +62,7 @@ Public Sub VBAHelpers_Import()
 
     'import dev functions
     exportfile_vbah = Path_Combine(Path_GetCurrentDirectory, vbahelpersdevfilename_vbah)
-    If Dir(exportfile_vbah) = "" Then
+    If Not File_Exists(exportfile_vbah) Then
         message_vbah = String_Format("Couldn't find dev functions:{0}{1}", vbCrLf, exportfile_vbah)
         MsgBox message_vbah, vbCritical
         Exit Sub
