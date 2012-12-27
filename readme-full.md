@@ -1,3 +1,4 @@
+![logo](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/img/logo128x128.png)
 
 VBA Helpers is a collection of useful VBA functions.
 
