@@ -20,6 +20,30 @@ Private Sub ITestFixture_AddTestCases(ByVal Tests As SimplyVBUnit.TestCaseCollec
 '--------------------------------------------------------------------
 
 
+Public Sub Directory_Exists_ExistingDir_ReturnsTrue()
+
+    Assert.IsTrue Directory_Exists(Path_GetCurrentDirectory)
+
+End Sub
+
+Public Sub Directory_Exists_NonExistingDir_ReturnsFalse()
+
+    Assert.IsFalse Directory_Exists(Path_Combine(Path_GetCurrentDirectory, "doesnt.exist"))
+
+End Sub
+
+Public Sub File_Exists_ExistingFile_ReturnsTrue()
+
+    Assert.IsTrue File_Exists(Path_Combine(Path_GetCurrentDirectory, "readme.md"))
+
+End Sub
+
+Public Sub File_Exists_NonExistingFile_ReturnsFalse()
+
+    Assert.IsFalse File_Exists(Path_Combine(Path_GetCurrentDirectory, "doesnt.exist"))
+
+End Sub
+
 Public Sub Path_Combine_SeparatorAtTheEnd_IsTruncated()
 
     Assert.AreEqualStrings Path_Combine("foo\"), "foo"

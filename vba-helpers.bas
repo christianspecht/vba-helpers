@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20121109.174956
+'# Version 20121227.215544
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -26,6 +26,21 @@ Const directoryseparatorchar_vbah As String = "\"
 Const environmentnewline_vbah As String = vbCrLf
 
 '##########################################################################################################################################
+
+
+Public Function Directory_Exists(ByVal path_vbah As String) As Boolean
+    'Returns True if the specified directory exists.
+    
+    Directory_Exists = (Dir(path_vbah, vbDirectory) > "")
+    
+End Function
+
+Public Function File_Exists(ByVal path_vbah As String) As Boolean
+    'Returns True if the specified file exists.
+    
+    File_Exists = (Dir(path_vbah) > "")
+    
+End Function
 
 Public Sub File_Delete(ByVal path_vbah As String)
     'Deletes a file. If the file does not exist, nothing happens.

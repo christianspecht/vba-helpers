@@ -29,6 +29,10 @@ Right-click and "Save as" to save it on your machine. To import:
 Most of the functions are named after (and do the same like) useful functions in .NET that I missed in VBA.  
 Here is a short summary of the available functions and what they do in a nutshell:
 
+- **`Directory_Exists`**  
+Returns True if the specified directory exists.
+- **`File_Exists`**  
+Returns True if the specified file exists.
 - **`File_Delete`**  
 Deletes a file. If the file does not exist, nothing happens.
 - **`File_ReadAllLines`**  
