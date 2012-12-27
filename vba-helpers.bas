@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20121227.215544
+'# Version 20121228.001859
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012 Christian Specht
@@ -35,13 +35,6 @@ Public Function Directory_Exists(ByVal path_vbah As String) As Boolean
     
 End Function
 
-Public Function File_Exists(ByVal path_vbah As String) As Boolean
-    'Returns True if the specified file exists.
-    
-    File_Exists = (Dir(path_vbah) > "")
-    
-End Function
-
 Public Sub File_Delete(ByVal path_vbah As String)
     'Deletes a file. If the file does not exist, nothing happens.
 
@@ -50,6 +43,13 @@ Public Sub File_Delete(ByVal path_vbah As String)
     End If
 
 End Sub
+
+Public Function File_Exists(ByVal path_vbah As String) As Boolean
+    'Returns True if the specified file exists.
+    
+    File_Exists = (Dir(path_vbah) > "")
+    
+End Function
 
 Public Function File_ReadAllLines(ByVal path_vbah As String) As String()
     'Reads a text file and returns a string array, each array item containing a line from the file.

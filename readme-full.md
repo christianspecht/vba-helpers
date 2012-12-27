@@ -31,10 +31,10 @@ Here is a short summary of the available functions and what they do in a nutshel
 
 - **`Directory_Exists`**  
 Returns True if the specified directory exists.
-- **`File_Exists`**  
-Returns True if the specified file exists.
 - **`File_Delete`**  
 Deletes a file. If the file does not exist, nothing happens.
+- **`File_Exists`**  
+Returns True if the specified file exists.
 - **`File_ReadAllLines`**  
 Reads a text file and returns a string array, each array item containing a line from the file.
 - **`File_ReadAllText`**  
