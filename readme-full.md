@@ -72,9 +72,9 @@ Updates VBA Helpers to newer version by importing a downloaded file (file must b
 
 ---
 
-### Development
+## Development
 
-##### Coding Guidelines
+### Coding Guidelines
 
 Unfortunately, [VBA globally changes the case of variable names when you mix upper/lower case](http://stackoverflow.com/q/4852735).  
 This is **very** annoying when using source control.  
@@ -86,7 +86,7 @@ To avoid this, all variable names in VBA Helpers must adhere to the following gu
 - suffixed by `_vbah` (for "VBA Helpers"), e.g. `foo_vbah`
 
 
-##### Committing changes
+### Committing changes
 
 Run `VBAHelpers_Export` to export all modules to the current directory, and commit them from there.
 
@@ -103,3 +103,9 @@ VBA Helpers makes use of the following open source projects:
 ### License
 
 VBA Helpers is licensed under the MIT License. See [License.txt](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/license.txt) for details.
+
+---
+
+### Project Info
+
+<script type="text/javascript" src="http://www.ohloh.net/p/603791/widgets/project_basic_stats.js"></script>
