@@ -3,10 +3,10 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20121228.002139
+'# Version 20130315.174002
 '# (the version number is just the current date/time)
 '#
-'# Copyright (c) 2012 Christian Specht
+'# Copyright (c) 2012-2013 Christian Specht
 '#
 '# Visit the project site for documentation and more information:
 '# http://christianspecht.de/vba-helpers/
@@ -124,6 +124,15 @@ Public Sub File_WriteAllText(ByVal path_vbah As String, ByVal contents_vbah As S
     Close #i_vbah
 
 End Sub
+
+Public Function InputBox_PressedCancel(ByRef inputboxresult_vbah) As Boolean
+    'Receives the return value of an InputBox, returns True when the input was canceled.
+    'Normally you can't distinguish whether you cancelled the input or submitted an empty string - the InputBox returns an empty string in both cases.
+    'Example: InputBox_PressedCancel(InputBox("foo")) returns True when you press Cancel, and False when you press OK without entering a value.
+
+    InputBox_PressedCancel = (StrPtr(inputboxresult_vbah) = 0)
+
+End Function
 
 Public Function Path_Combine(ParamArray paths_vbah() As Variant) As String
     'Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`

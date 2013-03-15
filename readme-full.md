@@ -50,6 +50,11 @@ Writes the content of a string array into a text file, each array item into a ne
 - **`File_WriteAllText`**  
 Writes the content of a string variable into a text file.
 
+- **`InputBox_PressedCancel`**  
+Receives the return value of an `InputBox`, returns `True` when the input was canceled.  
+Normally you can't distinguish whether you cancelled the input or submitted an empty string - the `InputBox` returns an empty string in both cases.  
+Example: `InputBox_PressedCancel(InputBox("foo"))` returns `True` when you press Cancel, and `False` when you press OK without entering a value.
+
 - **`Path_Combine`**  
 Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
 
