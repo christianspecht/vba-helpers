@@ -10,6 +10,8 @@ Public Sub VBAHelpers_Export()
     'Exports all modules to the current directory (for source control) and increases the version number in the VBA Helpers module.
 
     Const versionstring_vbah As String = "'# Version "
+    Const copyrightsearch_vbah As String = "'# Copyright "
+    Const copyrightstring_vbah As String = "'# Copyright (c) 2012-{0} Christian Specht"
     Dim exportfile_vbah As String
     
     'export VBA Helpers
@@ -26,6 +28,8 @@ Public Sub VBAHelpers_Export()
     For i_vbah = 0 To UBound(lines1_vbah)
         If String_StartsWith(lines1_vbah(i_vbah), versionstring_vbah) Then
             lines2_vbah(i_vbah) = versionstring_vbah & format(Now, "yyyymmdd.hhmmss")
+        ElseIf String_StartsWith(lines1_vbah(i_vbah), copyrightsearch_vbah) Then
+            lines2_vbah(i_vbah) = String_Format(copyrightstring_vbah, Year(Date))
         Else
             lines2_vbah(i_vbah) = lines1_vbah(i_vbah)
         End If

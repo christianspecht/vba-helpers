@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130315.174002
+'# Version 20130710.005539
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
