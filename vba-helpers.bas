@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130710.013348
+'# Version 20130710.014221
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -36,6 +36,12 @@ Public Enum accessversion_vbah
     Access2010 = 14
     Access2013 = 15
 End Enum
+
+'API call to ShellExecute, needed for Process_Start()
+Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, _
+    ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, _
+    ByVal lpDirectory As String, ByVal lpnShowCmd As Long) As Long
+
 
 '##########################################################################################################################################
 
@@ -235,6 +241,15 @@ Public Function Path_GetFileNameWithoutExtension(ByVal path_vbah As String) As S
     End If
     
 End Function
+
+Public Sub Process_Start(ByVal path_vbah)
+    'Executes a file. If the file itself is not an application, it will be started with the default application (as if you double-clicked it in Windows Explorer).
+    
+    If File_Exists(path_vbah) Then
+        ShellExecute 0, "open", path_vbah, "", "", 1
+    End If
+    
+End Sub
 
 Public Function String_Contains(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter occurs within the first parameter.

@@ -73,6 +73,9 @@ Receives a complete path, returns only the file name.
 - **`Path_GetFileNameWithoutExtension`**  
 Receives a complete path, returns only the file name without extension.
 
+- **`Process_Start`**  
+Executes a file. If the file itself is not an application, it will be started with the default application *(as if you double-clicked it in Windows Explorer)*.
+
 - **`String_Contains`**  
 Returns `True` if the second parameter occurs within the first parameter.
 
