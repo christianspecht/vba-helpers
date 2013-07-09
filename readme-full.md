@@ -30,7 +30,10 @@ Most of the functions are named after (and do the same like) useful functions in
 Here is a short summary of the available functions and what they do in a nutshell:
 
 - **`Directory_Exists`**  
-Returns True if the specified directory exists.
+Returns `True` if the specified directory exists.
+
+- **`Environment_GetAccessVersion`**  
+Returns an `Enum` which contains the version of the current msaccess.exe.
 
 - **`File_Delete`**  
 Deletes a file. If the file does not exist, nothing happens.
