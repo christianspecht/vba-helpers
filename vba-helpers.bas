@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130926.155408
+'# Version 20130926.155549
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -49,7 +49,9 @@ Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwn
 Public Function Directory_Exists(ByVal path_vbah As String) As Boolean
     'Returns True if the specified directory exists.
     
-    Directory_Exists = (Dir(path_vbah, vbDirectory) > "")
+    If path_vbah > "" Then
+        Directory_Exists = (Dir(path_vbah, vbDirectory) > "")
+    End If
     
 End Function
 

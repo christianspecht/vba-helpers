@@ -20,6 +20,12 @@ Private Sub ITestFixture_AddTestCases(ByVal Tests As SimplyVBUnit.TestCaseCollec
 '--------------------------------------------------------------------
 
 
+Public Sub Directory_Exists_EmptyString_ReturnsFalse()
+
+    Assert.IsFalse Directory_Exists("")
+
+End Sub
+
 Public Sub Directory_Exists_ExistingDir_ReturnsTrue()
 
     Assert.IsTrue Directory_Exists(Path_GetCurrentDirectory)
