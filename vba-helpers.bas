@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130710.014221
+'# Version 20130926.151132
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -70,7 +70,7 @@ Public Sub File_Delete(ByVal path_vbah As String)
 End Sub
 
 Public Function File_Exists(ByVal path_vbah As String) As Boolean
-    'Returns True if the specified file exists.
+    'Returns `True` if the specified file exists.
     
     File_Exists = (Dir(path_vbah) > "")
     
@@ -160,8 +160,9 @@ Public Function InputBox_PressedCancel(ByRef inputboxresult_vbah) As Boolean
 End Function
 
 Public Function Path_Combine(ParamArray paths_vbah() As Variant) As String
-    'Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
-    
+    'Combines several strings into a path and takes care of directory separators.
+    'Example: `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
+
     Dim path_vbah As Variant
     Dim retval_vbah As String
     
@@ -253,6 +254,7 @@ End Sub
 
 Public Function String_Contains(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter occurs within the first parameter.
+    'Example: `String_Contains("abc", "ab")` will return `True`
     
     String_Contains = (InStr(1, main_vbah, value_vbah) > 0)
     
@@ -260,13 +262,15 @@ End Function
 
 Public Function String_EndsWith(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter matches the end of the first parameter.
+    'Example: `String_EndsWith("abc", "bc")` will return `True`
     
     String_EndsWith = (Right(main_vbah, Len(value_vbah)) = value_vbah)
     
 End Function
 
 Public Function String_Format(ByVal format_vbah As String, ParamArray args_vbah() As Variant)
-    'Replaces numbered placeholders ({0}, {1}, ...) in the first parameter by the corresponding value from the additional parameter list.
+    'Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.
+    'Example: `String_Format("Hello {0}", "world")` will return `Hello world`
 
     Dim numberofargs_vbah As Integer
     Dim i_vbah As Integer
@@ -305,6 +309,7 @@ End Function
 
 Public Function String_StartsWith(ByVal main_vbah As String, ByVal value_vbah As String) As Boolean
     'Returns `True` if the second parameter matches the beginning of the first parameter.
+    'Example: `String_StartsWith("abc", "ab")` will return `True`
     
     String_StartsWith = (Left(main_vbah, Len(value_vbah)) = value_vbah)
     

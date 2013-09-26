@@ -19,7 +19,8 @@ I developed them for use in MS Access (and I developed and tested them **in** MS
 VBA Helpers consists of a single VBA file, [vba-helpers.bas](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/vba-helpers.bas), which you can just import into your application.  
 Right-click and "Save as" to save it on your machine. To import:
 
-- if you are using VBA Helpers for the first time, import the downloaded file from the VBA editor
+- if you are using VBA Helpers for the first time, import the downloaded file from the VBA editor  
+*(if Access asks you for a module name, name it `VBAHelpers`)*
 - if your project already contains VBA Helpers and you want to replace it with the newer version, you can put the new file in the same folder as your Access database and run the `VBAHelpers_Update` function.
 
 ---
@@ -33,13 +34,13 @@ Here is a short summary of the available functions and what they do in a nutshel
 Returns `True` if the specified directory exists.
 
 - **`Environment_GetAccessVersion`**  
-Returns an `Enum` which contains the version of the current msaccess.exe.
+Returns an `Enum` which contains the version of the current `msaccess.exe`.
 
 - **`File_Delete`**  
 Deletes a file. If the file does not exist, nothing happens.
 
 - **`File_Exists`**  
-Returns True if the specified file exists.
+Returns `True` if the specified file exists.
 
 - **`File_ReadAllLines`**  
 Reads a text file and returns a string array, each array item containing a line from the file.
@@ -59,7 +60,8 @@ Normally you can't distinguish whether you cancelled the input or submitted an e
 Example: `InputBox_PressedCancel(InputBox("foo"))` returns `True` when you press Cancel, and `False` when you press OK without entering a value.
 
 - **`Path_Combine`**  
-Combines several strings into a path and takes care of directory separators, i.e. `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
+Combines several strings into a path and takes care of directory separators.  
+Example: `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
 
 - **`Path_GetCurrentDirectory`**  
 Returns the directory of the current Access database.
@@ -77,13 +79,16 @@ Receives a complete path, returns only the file name without extension.
 Executes a file. If the file itself is not an application, it will be started with the default application *(as if you double-clicked it in Windows Explorer)*.
 
 - **`String_Contains`**  
-Returns `True` if the second parameter occurs within the first parameter.
+Returns `True` if the second parameter occurs within the first parameter.  
+Example: `String_Contains("abc", "ab")` will return `True`
 
 - **`String_EndsWith`**  
-Returns `True` if the second parameter matches the end of the first parameter.
+Returns `True` if the second parameter matches the end of the first parameter.  
+Example: `String_EndsWith("abc", "bc")` will return `True`
 
 - **`String_Format`**  
-Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.
+Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.  
+Example: `String_Format("Hello {0}", "world")` will return `Hello world`
 
 - **`String_PadLeft`**  
 Right-aligns the first string parameter by padding it on the left with the second string parameter, up to the total specified width.  
@@ -94,7 +99,8 @@ Left-aligns the first string parameter by padding it on the right with the secon
 Example: `String_PadRight("foo",5,"a")` will return `fooaa`
 
 - **`String_StartsWith`**  
-Returns `True` if the second parameter matches the beginning of the first parameter.
+Returns `True` if the second parameter matches the beginning of the first parameter.  
+Example: `String_StartsWith("abc", "ab")` will return `True`
 
 - **`VBAHelpers_Update`**  
 Updates VBA Helpers to newer version by importing a downloaded file (file must be in same folder as current Access database). See "Setup" above for more information.
@@ -105,7 +111,7 @@ Updates VBA Helpers to newer version by importing a downloaded file (file must b
 
 ### Coding Guidelines
 
-Unfortunately, [VBA globally changes the case of variable names when you mix upper/lower case](http://stackoverflow.com/q/4852735).  
+Unfortunately, [VBA globally changes the case of variable names when you mix upper/lower case](http://stackoverflow.com/q/4852735/6884).  
 This is **very** annoying when using source control.  
 It's even worse when VBA Helpers is imported into another VBA project, and the case of *the variables in this project* is changed because some of them happened to have the same names like some of the VBA Helpers variables.
 
@@ -114,6 +120,8 @@ To avoid this, all variable names in VBA Helpers must adhere to the following gu
 - lower case only
 - suffixed by `_vbah` (for "VBA Helpers"), e.g. `foo_vbah`
 
+This should minimize the chance of variable names from VBA Helpers colliding with variable names in your application.
+ 
 
 ### Committing changes
 
