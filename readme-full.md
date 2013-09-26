@@ -76,7 +76,8 @@ Receives a complete path, returns only the file name.
 Receives a complete path, returns only the file name without extension.
 
 - **`Process_Start`**  
-Executes a file. If the file itself is not an application, it will be started with the default application *(as if you double-clicked it in Windows Explorer)*.
+Executes a file. If the file itself is not an application, it will be started with the default application *(as if you double-clicked it in Windows Explorer)*.  
+Use the optional parameters to supply command-line arguments to the executed file, and to open the file hidden (without a visible window - useful for executing command-line tools)
 
 - **`String_Contains`**  
 Returns `True` if the second parameter occurs within the first parameter.  

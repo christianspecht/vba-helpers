@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130926.155549
+'# Version 20130926.161007
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -247,11 +247,12 @@ Public Function Path_GetFileNameWithoutExtension(ByVal path_vbah As String) As S
     
 End Function
 
-Public Sub Process_Start(ByVal path_vbah)
+Public Sub Process_Start(ByVal path_vbah, Optional ByVal parameters_vbah As String, Optional ByVal hidewindow_vbah As Boolean)
     'Executes a file. If the file itself is not an application, it will be started with the default application (as if you double-clicked it in Windows Explorer).
+    'Use the optional parameters to supply command-line arguments to the executed file, and to open the file hidden (without a visible window - useful for executing command-line tools)
     
     If File_Exists(path_vbah) Then
-        ShellExecute 0, "open", path_vbah, "", "", 1
+        ShellExecute 0, "open", path_vbah, parameters_vbah, "", IIf(hidewindow_vbah, 0, 1)
     End If
     
 End Sub
