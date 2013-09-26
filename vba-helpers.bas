@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130926.151132
+'# Version 20130926.155408
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -72,7 +72,9 @@ End Sub
 Public Function File_Exists(ByVal path_vbah As String) As Boolean
     'Returns `True` if the specified file exists.
     
-    File_Exists = (Dir(path_vbah) > "")
+    If path_vbah > "" Then
+        File_Exists = (Dir(path_vbah) > "")
+    End If
     
 End Function
 

@@ -32,6 +32,12 @@ Public Sub Directory_Exists_NonExistingDir_ReturnsFalse()
 
 End Sub
 
+Public Sub File_Exists_EmptyString_ReturnsFalse()
+
+    Assert.IsFalse File_Exists("")
+
+End Sub
+
 Public Sub File_Exists_ExistingFile_ReturnsTrue()
 
     Assert.IsTrue File_Exists(Path_Combine(Path_GetCurrentDirectory, "readme.md"))
