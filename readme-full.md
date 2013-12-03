@@ -150,6 +150,8 @@ VBA Helpers makes use of the following open source projects:
 
 - [AccUnit](http://accunit.access-codelib.net/) (which uses [SimplyVBUnit](http://sourceforge.net/projects/simplyvbunit/))
 
+<a name="license"></a>
+
 ---
 
 ### License

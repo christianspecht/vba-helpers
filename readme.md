@@ -7,4 +7,4 @@ See [http://christianspecht.de/vba-helpers](http://christianspecht.de/vba-helper
 
 ### License
 
-VBA Helpers is licensed under the MIT License. See [License.txt](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/license.txt) for details.
+VBA Helpers is licensed under the [MIT License](http://christianspecht.de/vba-helpers/#license).

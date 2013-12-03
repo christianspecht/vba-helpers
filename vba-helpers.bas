@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20131203.225412
+'# Version 20131203.225819
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -11,8 +11,8 @@
 '# Visit the project site for documentation and more information:
 '# http://christianspecht.de/vba-helpers/
 '#
-'# VBA Helpers is licensed under the MIT License.
-'# See https://bitbucket.org/christianspecht/vba-helpers/raw/tip/license.txt for details.
+'# VBA Helpers is licensed under the MIT License:
+'# http://christianspecht.de/vba-helpers/#license
 '#
 '##########################################################################################################################################
 
