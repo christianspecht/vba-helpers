@@ -170,6 +170,66 @@ Public Sub String_Format_MissingPlaceholderAndSuppliedParameter_ParameterIsIgnor
     
 End Sub
 
+Public Sub String_IsNullOrEmpty_Null_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrEmpty(Null)
+
+End Sub
+
+Public Sub String_IsNullOrEmpty_EmptyString_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrEmpty("")
+
+End Sub
+
+Public Sub String_IsNullOrEmpty_NullString_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrEmpty(vbNullString)
+
+End Sub
+
+Public Sub String_IsNullOrEmpty_NonEmptyString_ReturnsFalse()
+
+    Assert.IsFalse String_IsNullOrEmpty("foo")
+
+End Sub
+
+Public Sub String_IsNullOrEmpty_Blank_ReturnsFalse()
+
+    Assert.IsFalse String_IsNullOrEmpty(" ")
+
+End Sub
+
+Public Sub String_IsNullOrWhiteSpace_Null_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrWhiteSpace(Null)
+
+End Sub
+
+Public Sub String_IsNullOrWhiteSpace_EmptyString_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrWhiteSpace("")
+
+End Sub
+
+Public Sub String_IsNullOrWhiteSpace_NullString_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrWhiteSpace(vbNullString)
+
+End Sub
+
+Public Sub String_IsNullOrWhiteSpace_NonEmptyString_ReturnsFalse()
+
+    Assert.IsFalse String_IsNullOrWhiteSpace("foo")
+
+End Sub
+
+Public Sub String_IsNullOrWhiteSpace_Blank_ReturnsTrue()
+
+    Assert.IsTrue String_IsNullOrWhiteSpace(" ")
+
+End Sub
+
 Public Sub String_PadLeft_WithPaddingChar_IsPaddedCorrectly()
 
     Assert.AreEqualStrings String_PadLeft("foo", 5, "a"), "aafoo"

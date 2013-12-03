@@ -97,6 +97,14 @@ Example: `String_EndsWith("abc", "bc")` will return `True`
 Replaces numbered placeholders (`{0}`, `{1}`, ...) in the first parameter by the corresponding value from the additional parameter list.  
 Example: `String_Format("Hello {0}", "world")` will return `Hello world`
 
+- **`String_IsNullOrEmpty`**  
+Returns True when the input is either Null or an empty string.  
+*(note: a VBA string can't be Null, but the function is called `String_` anyway to keep the naming consistent)*
+
+- **`String_IsNullOrWhiteSpace`**  
+Returns True when the input is either Null, an empty string or consists of whitespace characters (blanks) only.  
+*(note: a VBA string can't be Null, but the function is called `String_` anyway to keep the naming consistent)*
+
 - **`String_PadLeft`**  
 Right-aligns the first string parameter by padding it on the left with the second string parameter, up to the total specified width.  
 Example: `String_PadLeft("foo",5,"a")` will return `aafoo`

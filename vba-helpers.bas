@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20131203.222127
+'# Version 20131203.225412
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -308,6 +308,32 @@ Public Function String_Format(ByVal format_vbah As String, ParamArray args_vbah(
     
     String_Format = format_vbah
 
+End Function
+
+Public Function String_IsNullOrEmpty(ByVal input_vbah As Variant) As Boolean
+    'Returns True when the input is either Null or an empty string.
+    '(note: a VBA string can't be Null, but the function is called `String_` anyway to keep the naming consistent)
+
+    String_IsNullOrEmpty = (Nz(input_vbah) = "")
+
+End Function
+
+Public Function String_IsNullOrWhiteSpace(ByVal input_vbah As Variant) As Boolean
+    'Returns True when the input is either Null, an empty string or consists of whitespace characters (blanks) only.
+    '(note: a VBA string can't be Null, but the function is called `String_` anyway to keep the naming consistent)
+    
+    Dim retval_vbah As Boolean
+    
+    retval_vbah = String_IsNullOrEmpty(input_vbah)
+    
+    If Not retval_vbah Then
+        If Trim(input_vbah) = "" Then
+            retval_vbah = True
+        End If
+    End If
+
+    String_IsNullOrWhiteSpace = retval_vbah
+    
 End Function
 
 Public Function String_PadLeft(ByVal inputstring_vbah, ByVal totalwidth_vbah, Optional ByVal paddingchar_vbah = " ")
