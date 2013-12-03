@@ -124,6 +124,13 @@ Updates VBA Helpers to newer version by importing a downloaded file (file must b
 
 ## Development
 
+### Importing the modules into a `.mdb` for the first time
+
+1. If you are starting from scratch, you need to import the three `.bas` files from the repository's into an Access database first.  
+**Important:** `VBAHelpersTests` needs to be a **class module**. The other two need to be **"regular" modules**.
+2. Add references to `AccUnit Access/VBA TestSuite` and `SimplyVBUnit Framework 3.0`.
+
+
 ### Coding Guidelines
 
 Unfortunately, [VBA globally changes the case of variable names when you mix upper/lower case](http://stackoverflow.com/q/4852735/6884).  
