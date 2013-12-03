@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20131203.221737
+'# Version 20131203.222127
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -25,7 +25,7 @@ Public Const vbahelpersmodulename_vbah As String = "VBAHelpers"
 Const directoryseparatorchar_vbah As String = "\"
 Const environmentnewline_vbah As String = vbCrLf
 
-'return value for Environment_GetAccessVersion()
+'return value for Environment_AccessVersion()
 Public Enum accessversion_vbah
     Access1995 = 7
     Access1997 = 8
@@ -55,10 +55,10 @@ Public Function Directory_Exists(ByVal path_vbah As String) As Boolean
     
 End Function
 
-Public Function Environment_GetAccessVersion() As accessversion_vbah
+Public Function Environment_AccessVersion() As accessversion_vbah
     'Returns an Enum which contains the version of the current msaccess.exe.
 
-    Environment_GetAccessVersion = Val(SysCmd(acSysCmdAccessVer))
+    Environment_AccessVersion = Val(SysCmd(acSysCmdAccessVer))
 
 End Function
 

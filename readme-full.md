@@ -33,7 +33,7 @@ Here is a short summary of the available functions and what they do in a nutshel
 - **`Directory_Exists`**  
 Returns `True` if the specified directory exists.
 
-- **`Environment_GetAccessVersion`**  
+- **`Environment_AccessVersion`**  
 Returns an `Enum` which contains the version of the current `msaccess.exe`.
 
 - **`Environment_MachineName`**  
