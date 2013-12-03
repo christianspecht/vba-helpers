@@ -36,6 +36,9 @@ Returns `True` if the specified directory exists.
 - **`Environment_GetAccessVersion`**  
 Returns an `Enum` which contains the version of the current `msaccess.exe`.
 
+- **`Environment_MachineName`**  
+Returns the name of the local computer.
+
 - **`File_Delete`**  
 Deletes a file. If the file does not exist, nothing happens.
 
@@ -74,6 +77,9 @@ Receives a complete path, returns only the file name.
 
 - **`Path_GetFileNameWithoutExtension`**  
 Receives a complete path, returns only the file name without extension.
+
+- **`Path_GetTempPath`**  
+Returns the current user's temp folder.
 
 - **`Process_Start`**  
 Executes a file. If the file itself is not an application, it will be started with the default application *(as if you double-clicked it in Windows Explorer)*.  

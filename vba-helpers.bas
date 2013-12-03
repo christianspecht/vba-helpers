@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20130926.161007
+'# Version 20131203.221737
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2013 Christian Specht
@@ -60,6 +60,13 @@ Public Function Environment_GetAccessVersion() As accessversion_vbah
 
     Environment_GetAccessVersion = Val(SysCmd(acSysCmdAccessVer))
 
+End Function
+
+Public Function Environment_MachineName() As String
+    'Returns the name of the local computer.
+    
+    Environment_MachineName = Environ("computername")
+    
 End Function
 
 Public Sub File_Delete(ByVal path_vbah As String)
@@ -244,6 +251,13 @@ Public Function Path_GetFileNameWithoutExtension(ByVal path_vbah As String) As S
     ElseIf i_vbah > 0 Then
         Path_GetFileNameWithoutExtension = Left(filename_vbah, i_vbah - 1)
     End If
+    
+End Function
+
+Public Function Path_GetTempPath() As String
+    'Returns the current user's temp folder.
+    
+    Path_GetTempPath = Environ("temp")
     
 End Function
 
