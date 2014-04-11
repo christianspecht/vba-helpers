@@ -104,6 +104,12 @@ Public Sub Path_GetExtension_DirectoryWithFilenameWithoutExtension_ReturnsEmptyS
  
 End Sub
 
+Public Sub Path_GetExtension_DirectoryWithDotAndFilenameWithoutExtension_ReturnsEmptyString()
+
+    Assert.AreEqualStrings Path_GetExtension("fo.o\bar"), ""
+ 
+End Sub
+
 Public Sub Path_GetFileName_DirectoryWithFilename_ReturnsFilenameOnly()
 
     Assert.AreEqualStrings Path_GetFileName("foo\bar.txt"), "bar.txt"
@@ -131,6 +137,12 @@ End Sub
 Public Sub Path_GetFileNameWithoutExtension_FilenameWithoutExtension_ReturnsFilename()
 
     Assert.AreEqualStrings Path_GetFileNameWithoutExtension("foo\bar"), "bar"
+    
+End Sub
+
+Public Sub Path_GetFileNameWithoutExtension_DirectoryWithDotAndFilenameWithoutExtension_ReturnsFileName()
+
+    Assert.AreEqualStrings Path_GetFileNameWithoutExtension("fo.o\bar"), "bar"
     
 End Sub
 

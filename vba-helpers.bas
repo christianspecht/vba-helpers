@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20140411.195253
+'# Version 20140411.200133
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2014 Christian Specht
@@ -226,12 +226,15 @@ End Function
 Public Function Path_GetExtension(ByVal path_vbah As String) As String
     'Receives a complete path, returns only the extension.
     
+    Dim filename_vbah As String
     Dim i_vbah As Long
     
-    i_vbah = InStrRev(path_vbah, ".")
+    filename_vbah = Path_GetFileName(path_vbah)
+    
+    i_vbah = InStrRev(filename_vbah, ".")
     
     If i_vbah > 0 Then
-        Path_GetExtension = Mid(path_vbah, i_vbah)
+        Path_GetExtension = Mid(filename_vbah, i_vbah)
     End If
     
 End Function
