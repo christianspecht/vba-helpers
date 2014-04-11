@@ -92,6 +92,18 @@ Public Sub Path_GetDirectoryName_RootDirectoryOnly_ReturnsEmptyString()
 
 End Sub
 
+Public Sub Path_GetExtension_DirectoryWithFilename_ReturnsExtensionWithDot()
+
+    Assert.AreEqualStrings Path_GetExtension("foo\bar.txt"), ".txt"
+ 
+End Sub
+
+Public Sub Path_GetExtension_DirectoryWithFilenameWithoutExtension_ReturnsEmptyString()
+
+    Assert.AreEqualStrings Path_GetExtension("foo\bar"), ""
+ 
+End Sub
+
 Public Sub Path_GetFileName_DirectoryWithFilename_ReturnsFilenameOnly()
 
     Assert.AreEqualStrings Path_GetFileName("foo\bar.txt"), "bar.txt"

@@ -3,10 +3,10 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20131203.225819
+'# Version 20140411.195253
 '# (the version number is just the current date/time)
 '#
-'# Copyright (c) 2012-2013 Christian Specht
+'# Copyright (c) 2012-2014 Christian Specht
 '#
 '# Visit the project site for documentation and more information:
 '# http://christianspecht.de/vba-helpers/
@@ -219,6 +219,19 @@ Public Function Path_GetDirectoryName(ByVal path_vbah As String) As String
             Path_GetDirectoryName = Left(path_vbah, i_vbah - 1)
         End If
 
+    End If
+    
+End Function
+
+Public Function Path_GetExtension(ByVal path_vbah As String) As String
+    'Receives a complete path, returns only the extension.
+    
+    Dim i_vbah As Long
+    
+    i_vbah = InStrRev(path_vbah, ".")
+    
+    If i_vbah > 0 Then
+        Path_GetExtension = Mid(path_vbah, i_vbah)
     End If
     
 End Function

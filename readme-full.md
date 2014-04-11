@@ -69,6 +69,9 @@ Example: `path_combine("c:\","\foo","bar")` will return `c:\foo\bar`
 - **`Path_GetCurrentDirectory`**  
 Returns the directory of the current Access database.
 
+- **`Path_GetExtension`**  
+Receives a complete path, returns only the extension.
+
 - **`Path_GetDirectoryName`**  
 Receives a complete path, returns only the directory.
 
