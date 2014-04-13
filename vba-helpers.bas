@@ -3,7 +3,7 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20140411.200133
+'# Version 20140413.162528
 '# (the version number is just the current date/time)
 '#
 '# Copyright (c) 2012-2014 Christian Specht
@@ -66,6 +66,13 @@ Public Function Environment_MachineName() As String
     'Returns the name of the local computer.
     
     Environment_MachineName = Environ("computername")
+    
+End Function
+
+Public Function Environment_UserName() As String
+    'Returns the name of the current logged on Windows user.
+    
+    Environment_UserName = Environ("username")
     
 End Function
 

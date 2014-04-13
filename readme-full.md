@@ -39,6 +39,9 @@ Returns an `Enum` which contains the version of the current `msaccess.exe`.
 - **`Environment_MachineName`**  
 Returns the name of the local computer.
 
+- **`Environment_UserName`**   
+Returns the name of the current logged on Windows user.
+
 - **`File_Delete`**  
 Deletes a file. If the file does not exist, nothing happens.
 
