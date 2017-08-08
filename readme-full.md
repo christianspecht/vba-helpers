@@ -136,6 +136,14 @@ Updates VBA Helpers to newer version by importing a downloaded file (file must b
 **Important:** `VBAHelpersTests` needs to be a **class module**. The other two need to be **"regular" modules**.
 2. Add references to `AccUnit Access/VBA TestSuite` and `SimplyVBUnit Framework 3.0`.
 
+#### Updating the `.mdb` with the newest changes from the repository later
+
+Place the `.mdb` in the repository's main directory (the `.hgignore` file makes sure you don't commit it to the repo).  
+Then run the `VBAHelpers_Import` function from the Immediate Window.
+
+*Note: `VBAHelpers_Import` will update **all** modules - this is what you want to use for VBA Helpers development.  
+(There's also the `VBAHelpers_Update` function mentioned above, which updates **only** the VBA Helpers module itself. This is meant for other applications which are just using VBA Helpers as a dependency, not for VBA Helpers development.)*
+
 
 ### Coding Guidelines
 
