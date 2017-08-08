@@ -38,6 +38,12 @@ Public Sub Directory_Exists_NonExistingDir_ReturnsFalse()
 
 End Sub
 
+Public Sub Directory_Exists_UncPath_ReturnsTrue()
+
+    Assert.IsTrue Directory_Exists("\\localhost\c$") 'this UNC path should exist on any random machine
+
+End Sub
+
 Public Sub File_Exists_EmptyString_ReturnsFalse()
 
     Assert.IsFalse File_Exists("")

@@ -159,9 +159,8 @@ Run `VBAHelpers_Export` to export all modules to the current directory, and comm
 
 ### Acknowledgements
 
-VBA Helpers makes use of the following open source projects:
-
 - [AccUnit](http://accunit.access-codelib.net/) (which uses [SimplyVBUnit](http://sourceforge.net/projects/simplyvbunit/))
+- [Allen Browne](http://allenbrowne.com) for the `Directory_Exists` implementation
 
 <a name="license"></a>
 

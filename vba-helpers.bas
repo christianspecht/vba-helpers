@@ -3,10 +3,10 @@
 '# VBA Helpers
 '# A collection of useful VBA functions
 '#
-'# Version 20140413.162528
+'# Version 20170808.223901
 '# (the version number is just the current date/time)
 '#
-'# Copyright (c) 2012-2014 Christian Specht
+'# Copyright (c) 2012-2017 Christian Specht
 '#
 '# Visit the project site for documentation and more information:
 '# http://christianspecht.de/vba-helpers/
@@ -50,7 +50,9 @@ Public Function Directory_Exists(ByVal path_vbah As String) As Boolean
     'Returns True if the specified directory exists.
     
     If path_vbah > "" Then
-        Directory_Exists = (Dir(path_vbah, vbDirectory) > "")
+        'Source: http://allenbrowne.com/func-11.html
+        On Error Resume Next
+        Directory_Exists = ((GetAttr(path_vbah) And vbDirectory) = vbDirectory)
     End If
     
 End Function
