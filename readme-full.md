@@ -138,7 +138,7 @@ Updates VBA Helpers to newer version by importing a downloaded file (file must b
 
 #### Updating the `.mdb` with the newest changes from the repository later
 
-Place the `.mdb` in the repository's main directory (the `.hgignore` file makes sure you don't commit it to the repo).  
+Place the `.mdb` in the repository's main directory (the `.gitignore` file makes sure you don't commit it to the repo).  
 Then run the `VBAHelpers_Import` function from the Immediate Window.
 
 *Note: `VBAHelpers_Import` will update **all** modules - this is what you want to use for VBA Helpers development.  
