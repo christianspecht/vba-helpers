@@ -1,4 +1,4 @@
-![logo](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/img/logo128x128.png)
+![logo](https://raw.githubusercontent.com/christianspecht/vba-helpers/master/img/logo128x128.png)
 
 VBA Helpers is a collection of useful VBA functions.
 
@@ -8,15 +8,15 @@ I developed them for use in MS Access (and I developed and tested them **in** MS
 
 ## Links
 
-- [Download vba-helpers.bas directly](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/vba-helpers.bas) (see "Setup" below)
-- [Report a bug](https://bitbucket.org/christianspecht/vba-helpers/issues/new)
-- [Main project page on Bitbucket](https://bitbucket.org/christianspecht/vba-helpers)
+- [Download vba-helpers.bas directly](https://raw.githubusercontent.com/christianspecht/vba-helpers/master/vba-helpers.bas) (see "Setup" below)
+- [Report a bug](https://github.com/christianspecht/vba-helpers/issues/new)
+- [Main project page on GitHub](https://github.com/christianspecht/vba-helpers)
 
 ---
 
 ## Setup
 
-VBA Helpers consists of a single VBA file, [vba-helpers.bas](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/vba-helpers.bas), which you can just import into your application.  
+VBA Helpers consists of a single VBA file, [vba-helpers.bas](https://raw.githubusercontent.com/christianspecht/vba-helpers/master/vba-helpers.bas), which you can just import into your application.  
 Right-click and "Save as" to save it on your machine. To import:
 
 - if you are using VBA Helpers for the first time, import the downloaded file from the VBA editor  
@@ -176,7 +176,7 @@ Run `VBAHelpers_Export` to export all modules to the current directory, and comm
 
 ### License
 
-VBA Helpers is licensed under the MIT License. See [License.txt](https://bitbucket.org/christianspecht/vba-helpers/raw/tip/license.txt) for details.
+VBA Helpers is licensed under the MIT License. See [License.txt](https://raw.githubusercontent.com/christianspecht/vba-helpers/master/license.txt) for details.
 
 ---
 
